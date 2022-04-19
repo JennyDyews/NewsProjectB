@@ -5,13 +5,13 @@
              x:Class="News.Views.ConsolePage"
              Title="Debug Console"
              Padding="10,30,10,5">
-    <StackLayout Padding="10" >
+    <StackLayout Padding="10" Background="#0F2557">
         <Label Text="Simple Console Output" HorizontalOptions="Center" FontSize="24"/>
         <StackLayout Orientation="Horizontal" HeightRequest="50" HorizontalOptions="Center">
             <Stepper x:Name="stepper" Minimum="0" Increment="1" VerticalOptions="Center"/>
             <Label Text="{Binding Value}" BindingContext="{x:Reference stepper}" VerticalOptions="Center" />
         </StackLayout>
-        <StackLayout>
+        <StackLayout BackgroundColor="#2197C7">
             <Button Text="Run your Console program" Clicked="Button_Clicked" />
             <ScrollView>
                 <Editor x:Name="myOutput" IsReadOnly="True" AutoSize="TextChanges"/>

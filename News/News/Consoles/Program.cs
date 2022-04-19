@@ -20,7 +20,7 @@ namespace News.Consoles
         #region used by the Console
         Views.ConsolePage theConsole;
         StringBuilder theConsoleString;
-        public Program (Views.ConsolePage myConsole)
+        public Program(Views.ConsolePage myConsole)
         {
             //used for the Console
             theConsole = myConsole;
@@ -30,6 +30,59 @@ namespace News.Consoles
 
         #region Console Demo program
         //This is the method you replace with your async method renamed and NON static Main
+
+        public void myMain(string[] args)
+        {
+            NewsService service = new NewsService();
+
+            service.NewsAvailable += myEventHandler;
+            Task<NewsGroup> t1 = null, t2 = null;
+            Exception exception = null;
+
+            try
+            {
+                for (NewsCategory i = NewsCategory.business; i < NewsCategory.technology + 1; i++)
+                {
+                    t1 = service.GetNewsAsync(i);
+
+                }
+                Task.WaitAll(t1);
+
+                for (NewsCategory i = NewsCategory.business; i < NewsCategory.technology + 1; i++)
+                {
+                    t2 = service.GetNewsAsync(i);
+
+                }
+                Task.WaitAll(t2);
+            }
+            catch (Exception ex)
+            {
+
+                exception = ex;
+            }
+            Console.WriteLine("---------------------------");
+            for (NewsCategory i = NewsCategory.business; i < NewsCategory.technology + 1; i++)
+            {
+
+                Console.WriteLine($"News in Category {i}");
+                if (t1?.Status == TaskStatus.RanToCompletion)
+                {
+                    NewsGroup news = t1.Result;
+
+                    news.Articles.ForEach(a => Console.WriteLine($" - {a.DateTime.ToString("yyyy-MM-dd HH:mm")}\t: {a.Title}"));
+
+                }
+                else
+                {
+                    Console.WriteLine($"Geolocation News service error.");
+                }
+
+            }
+
+
+        }
+
+
         public async Task myMain()
         {
             theConsole.WriteLine("Demo program output");
@@ -61,6 +114,7 @@ namespace News.Consoles
                 theConsoleString.Append($"Nr of characters downloaded: {str.Length}");
             }
             theConsole.WriteLine(theConsoleString.ToString());
+
         }
 
         //If you have any event handlers, they could be placed here

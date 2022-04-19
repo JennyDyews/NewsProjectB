@@ -18,11 +18,11 @@ namespace News.Models
         public string Key => category.ToString() + timewindow;
         public bool CacheExist => File.Exists(FileName);
 
-        public NewsCacheKey (NewsCategory category, DateTime dt)
+        public NewsCacheKey(NewsCategory category, DateTime dt)
         {
             this.category = category;
             timewindow = DateTime.Now.ToString("yyyy-MM-dd-HH-mm"); //Cache expiration every minute
-//            timewindow = DateTime.Now.ToString("yyyy-MM-dd-HH"); //Cache expiration every hour
+                                                                    //            timewindow = DateTime.Now.ToString("yyyy-MM-dd-HH"); //Cache expiration every hour
         }
         static string fname(string name)
         {
@@ -31,7 +31,7 @@ namespace News.Models
             if (!Directory.Exists(documentPath)) Directory.CreateDirectory(documentPath);
             return Path.Combine(documentPath, name);
         }
-      }
+    }
 
     [XmlRoot("News", Namespace = "http://mynamespace/test/")]
     public class NewsGroup
@@ -43,7 +43,7 @@ namespace News.Models
         {
             var _locker = new object();
             lock (_locker)
-            { 
+            {
                 var xs = new XmlSerializer(typeof(NewsGroup));
                 using (Stream s = File.Create(fname))
                     xs.Serialize(s, news);

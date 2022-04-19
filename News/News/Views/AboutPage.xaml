@@ -5,8 +5,8 @@
              Title="About News">
 
     <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Project Part B" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        <Frame BackgroundColor="AliceBlue" Padding="24" CornerRadius="0">
+            <Label Text="Project Part B" HorizontalTextAlignment="Center" TextColor="black" FontSize="36"/>
         </Frame>
         <Label Text="News in Xamarin.Forms" FontSize="Title" Padding="30,10,30,10"/>
         <Label Text="This part of the project is about making a simple UI in to the console news service made in project part A using Tabs." 
@@ -17,7 +17,7 @@
             <Label.FormattedText>
                 <FormattedString>
                     <FormattedString.Spans>
-                        <Span Text="Martin Lenart"/>
+                        <Span Text="Jenny Dyews"/>
                     </FormattedString.Spans>
                 </FormattedString>
             </Label.FormattedText>

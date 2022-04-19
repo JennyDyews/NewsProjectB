@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="News.Views.NewsPage">
+
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="LightGray">
+            <Button Text="Refresh"
+                    Clicked="refresh" TextColor="black"/>
+
+            <Button Text="Connection" Clicked="Connection_Clicked" TextColor="black"></Button>
+            <Label x:Name="runningStatusLabel"
+               Text="All tasks are completed!"
+               />
+
+            <Label x:Name="categoryName" FontSize="Header" Scale="0.5" TextColor ="black" ></Label>
+
+            <ActivityIndicator x:Name="SlowConnection"
+                               Color="black"></ActivityIndicator>
+            <ListView x:Name= "NewsListView"
+               ItemTapped="NewsListView_ItemTapped" IsGroupingEnabled="False">
+
+                <ListView.ItemTemplate>
+
+                    <DataTemplate>
+                        <ViewCell>
+
+                            <Frame BackgroundColor="LightYellow" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" WidthRequest="450" HeightRequest="200" CornerRadius="10" Margin="20,10,20,10">
+                                <Grid >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Row="1" Grid.Column="1"  Text="{Binding DateTime, StringFormat='{0:dddd, dd MMMM yyyy hh:mm:ss tt}'}" FontSize="15" TextColor="Black"/>
+                                    <Label Grid.Row="2" Grid.Column="1"  Text="{Binding Title}" FontSize="20" FontAttributes="Bold" TextColor="black"/>
+                                    <Label Grid.Row="3" Grid.Column="1"  Text="{Binding Description}" FontSize="15" TextColor="black"/>
+                                    <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="4" WidthRequest="160" Source="{Binding UrlToImage}" />
+
+
+                                </Grid>
+
+                            </Frame>
+
+
+
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

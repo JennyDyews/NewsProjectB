@@ -26,7 +26,7 @@ namespace News.ModelsSampleData
                 lock (_locker)
                 {
                     NewsApiData newsapi;
-                    
+
                     //How to access an embedded file resource
                     Type type = typeof(NewsApiSampleData);
                     var assembly = IntrospectionExtensions.GetTypeInfo(type).Assembly;

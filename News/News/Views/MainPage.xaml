@@ -2,10 +2,23 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:News.Views" 
-             x:Class="News.Views.MainPage">
-  <!--Pages can be added as references or inline-->
-    <TabbedPage.Children>
+           
+             x:Class="News.Views.MainPage" BarBackground="lightyellow" SelectedTabColor="HotPink"  UnselectedTabColor="black">
+    <!--Pages can be added as references or inline-->
+    <TabbedPage.Children >
         <views:AboutPage />
         <views:ConsolePage />
+        <views:NewsPage Title="business"></views:NewsPage>
+        <views:NewsPage Title="entertainment"></views:NewsPage>
+
+        <views:NewsPage Title="general"></views:NewsPage>
+        <views:NewsPage Title="health"></views:NewsPage>
+        <views:NewsPage Title="science"></views:NewsPage>
+        <views:NewsPage Title="sports"></views:NewsPage>
+        <views:NewsPage Title="technology"></views:NewsPage>
+
+
+
+
     </TabbedPage.Children>
 </TabbedPage>

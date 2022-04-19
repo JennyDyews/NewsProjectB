@@ -10,7 +10,8 @@ namespace News
         {
             InitializeComponent();
 
-            MainPage = new Views.MainPage();
+            //MainPage = new Views.MainPage();
+            MainPage = new NavigationPage(new Views.MainPage());
         }
 
         protected override void OnStart()
